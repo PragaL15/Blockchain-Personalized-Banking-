@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    background-image: url("F:/Blockchain/BCT original/components/transaction.jpg");
+    background-size: 1280px 569px;
+  }
+  a {
+    text-decoration: none;
+  }
+  
+  #amount{
+    background-color: #f7f6f6;
+    color: #000000;
+    font-size: 25px;
+    width: 300px;
+    height: 28px;
+    position: fixed;
+    margin-top: 130px;
+    margin-left: 570px;
+  }
+  header{
+    margin-top: 19px;
+    padding: 10px;
+  }
+ #trans{
+  margin-top: 130px;
+  margin-left: 190px;
+  color: #ffffff;
+  font-size: 32px;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  position: fixed;
+ }
+  #deposit{
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #d5f7d6;
+    color: rgb(103, 5, 5); 
+    padding: 10px 13px; 
+   margin-top: 170px;
+   margin-left: 600px;
+  }
+  .custom-button{
+    margin-left: 1170px;
+    background-color: aliceblue;
+    color: black;
+    padding: 10px 15px;
+    text-decoration: none;
+    position: fixed;
+    font-size: 20px;
+    margin-top: 5px;
+    font-weight: 600;
+  }
+  .balance{
+    background-color:  rgb(187, 255, 249);
+    padding: 10px 15px;
+    font-weight: 600;
+    font-size: 19px;
+    color: #333333;
+    margin-top: 10px;
+  } 
+  nav li {
+    display: inline-block;
+    margin-left: 10px;
+    padding-right: 30px;
+    font-size: 20px;
+    color: #333333;
+  }
+.home{background-color: rgb(187, 255, 249);
+    padding: 10px 15px;
+    font-weight: 600;
+    font-size: 19px;
+    color: #333333;
+    margin-top: 10px;
+    margin-left: 670px;
+}
+.TransferFund{
+  background-color:  rgb(187, 255, 249);
+    padding: 10px 15px;
+    font-weight: 600;
+    font-size: 19px;
+    color: #333333;
+    margin-top: 10px;
+   }
+
+
+  
+  

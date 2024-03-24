@@ -1,0 +1,61 @@
+h1{
+    margin-left: 550px;
+   margin-top: 50px;
+    color: azure;
+    font-size: 30px;
+    font-weight: bolder;
+    font-family: "Times New Roman", sans-serif;
+    padding: 25px 25px;
+}
+body{
+    background-image: url("https://static.vecteezy.com/system/resources/previews/011/231/538/original/abstract-geometric-background-with-isometric-digital-blocks-blockchain-concept-and-modern-technology-illustration-free-vector.jpg");
+    background-size: 1280px 573px;
+    justify-content: center;
+}
+.custom-button{
+    position: fixed;
+    top: 20px;
+    right: 10px;
+    padding: 10px;
+    background-color: #aaecf8;
+    color: #000000;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;}
+label{
+    color: aliceblue;
+    font-size: 30px;
+    margin-left: 450px;
+    padding: 50px 20px;
+    padding: 20px;
+}
+.loginhtml{
+    justify-content: center;
+    padding: 5px 5px;
+    margin-left: 600px;
+    font-size: 17px;
+    background-color: beige;
+    color: black;
+    font-weight: bold;
+}
+
+.sign-button{
+    padding: 5px 5px;
+    margin-left: 10px;
+    font-size: 17px;
+    background-color: beige;
+    color: rgb(1, 0, 0);
+    border-radius: 15%;
+    font-weight: bold;
+}
+a{
+    background-color: beige;
+    color: rgb(1, 0, 0);
+}
+input{
+    font-size: larger;
+    padding: 5px 5px;
+    margin-bottom: 10px;
+    position: fixed;
+}
+

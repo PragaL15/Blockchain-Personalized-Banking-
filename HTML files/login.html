@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LOGIN</title>
+    <link rel="stylesheet" type="text/css" href="F:\Blockchain\BCT original\style\login.css">
+</head>
+<body>
+    <h1>LOGIN HERE</h1>
+    <form id="loginForm" method="post">
+        <label for="fname">USERNAME: </label>
+        <input type="text" id="username" name="fname" placeholder="Enter username.."><br><br>
+        <label for="lname">PASSWORD: </label>
+        <input type="password" id="password" name="password" placeholder="Enter password.."><br><br>
+        <input type="submit" value="LOGIN" class="loginhtml">
+    </form>
+
+    <script>
+document.getElementById("loginForm").addEventListener("submit", function(event) {
+event.preventDefault();
+var username = document.getElementById("username").value;
+var password = document.getElementById("password").value;
+if (username === "QT-SAC" && password === "05062023") {
+window.location.href = "Landing.html";
+} else {
+
+alert("Incorrect username or password. Please try again.");
+}
+});
+    </script>
+</body>
+</html>

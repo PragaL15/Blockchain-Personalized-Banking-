@@ -1,0 +1,46 @@
+body 
+{
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    background-image: url("F:/Blockchain/BCT original/components/withdraw.jpg");
+    background-size: 1280px 580px;
+  }
+  .custom-button{
+    margin-left: 1160px;
+    margin-top: 3%;
+    background-color: aliceblue;
+    color: black;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .withdraw
+  {
+   display: flex;
+   color: #0c0c0c;
+   background-color: #ffe0e0;
+   border-color: #a80000;
+   font-weight: bolder; 
+   font-size: 30px;
+   margin-left: 40%;
+   margin-top: 3%;
+  }
+#withdraw-amount
+{  
+  display: flex;
+  color: #ffffff;
+  font-weight: bolder; 
+  font-size: 25px;
+  margin-left: 40%;
+  margin-top: 10px;
+}
+#withdraw
+  {
+    font-size: 17px;
+    font-weight: bold; 
+    background-color: #d1faff;
+    color: rgb(3, 3, 3); 
+    padding: 7px 12px; 
+    margin-left: 40%;
+  }

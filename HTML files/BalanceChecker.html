@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Balance Checker</title>
+  <link rel="stylesheet" type="text/css" href="F:\Blockchain\BCT original\style\balance.css">
+</head>
+<body>
+  <a href="Landing.html" class="custom-button">BACK</button></a>
+
+    <h1>BALANCE CHECKER</h1>
+  
+        <label class="your">YOUR BALANCE:</label>
+        <h2 id="balance"></h2>
+           <br> <br>
+           <br> <br>
+        <button id="checkBalance">CHECK BALANCE</button>
+       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+       <script src="https://cdn.jsdelivr.net/npm/web3@1.5.3/dist/web3.min.js"></script>
+   
+       <script>
+           var contract;
+           var web3;
+   
+           $(document).ready(function() {
+               if (typeof web3 !== 'undefined') {
+                   web3 = new Web3(web3.currentProvider);
+               } else {
+                   // Handle the case when the user doesn't have MetaMask or any other Ethereum provider
+                   web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/YOUR_INFURA_PROJECT_ID"));
+               }
+   
+               var address = "0x437208D19162d66DF94640284B41bC2EA81D32e7";
+               var abi =[
+			   {
+				   "inputs": [
+					   {
+						   "internalType": "int256",
+						   "name": "amt",
+						   "type": "int256"
+					   }
+				   ],
+				   "name": "deposit",
+				   "outputs": [],
+				   "stateMutability": "nonpayable",
+				   "type": "function"
+			   },
+			   {
+				   "inputs": [
+					   {
+						   "internalType": "address",
+						   "name": "recipient",
+						   "type": "address"
+					   },
+					   {
+						   "internalType": "int256",
+						   "name": "amt",
+						   "type": "int256"
+					   }
+				   ],
+				   "name": "transfer",
+				   "outputs": [],
+				   "stateMutability": "nonpayable",
+				   "type": "function"
+			   },
+			   {
+				   "inputs": [],
+				   "stateMutability": "nonpayable",
+				   "type": "constructor"
+			   },
+			   {
+				   "inputs": [
+					   {
+						   "internalType": "int256",
+						   "name": "amt",
+						   "type": "int256"
+					   }
+				   ],
+				   "name": "withdraw",
+				   "outputs": [],
+				   "stateMutability": "nonpayable",
+				   "type": "function"
+			   },
+			   {
+				   "inputs": [],
+				   "name": "getBalance",
+				   "outputs": [
+					   {
+						   "internalType": "int256",
+						   "name": "",
+						   "type": "int256"
+					   }
+				   ],
+				   "stateMutability": "view",
+				   "type": "function"
+			   }
+		   ];
+               contract = new web3.eth.Contract(abi, address);
+           });
+           $(document).ready(function() {
+     $('#checkBalance').click(function() {
+       ethereum.request({ method: 'eth_requestAccounts' })
+         .then(function(accounts) {
+           if (accounts.length > 0) {
+             var acc = accounts[0];
+             return contract.methods.getBalance().call({ from: acc });
+           } else {
+             throw new Error("No Ethereum accounts available");
+           }
+         }).then(function(bal) {
+           $('#balance').html(bal);
+         }).catch(function(error) {
+           console.log(error);
+         });
+     });
+   });
+   $(document).ready(function() {
+       $('#checkBalance').click(function() {
+         ethereum.request({ method: 'eth_requestAccounts' })
+           .then(function(accounts) {
+             if (accounts.length > 0) {
+               var acc = accounts[0];
+               return contract.methods.getBalance().call({ from: acc });
+             } else {
+               throw new Error("No Ethereum accounts available");
+             }
+           }).then(function(bal) {
+             console.log("Balance:", bal);
+             // You can update the balance display on the page here
+           }).catch(function(error) {
+             console.log(error);
+           });
+       });
+     });
+       </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+body{
+    background-image: url("F:/Blockchain/BCT original/components/about.jpg");
+    background-size: 1280px 580px;
+}
+h1{
+    font-size: larger;
+    font-weight: 700;
+    color: aliceblue;
+    font-size: 40px;
+    margin-left: 580px;
+}
+.custom-button{
+    margin-left: 1160px;
+    background-color: aliceblue;
+    color: black;
+    padding: 10px 15px;
+    text-decoration: none;
+    position: absolute;
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 5px;
+  }
+ p {
+      margin-top: 40px;
+      margin-left: 45px;
+      margin-right: 45px;
+      font-size: 22px;
+      color: white;
+      font-style: initial;
+    }
+    

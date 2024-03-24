@@ -1,0 +1,141 @@
+<html>
+<head>
+  <title>Bank Transaction Page</title>
+  <link rel="stylesheet" type="text/css" href="F:\Blockchain\BCT original\style\transaction.css">
+</head>
+<body>
+  <header>
+    <nav>
+        <li><a href="Landing.html" class="home" type="menu">Home</button></a></li>
+        <li><a href="TransferFunds.html" class="TransferFund" type="menu">Transfered Funds</button></a></li>
+        <li><a href="BalanceChecker.html" class="balance" type="menu">BalanceChecker</button></a></li>
+    </nav>
+  </header>
+
+  <br>
+  <label id="trans" for="transaction-amount">AMOUNT OF DEPOSIT:</label>
+  <input type="text" id="amount">
+  <br>
+  <br>
+  <button id="deposit">DEPOSIT</button>
+
+  <script type="text/javascript">
+    window.onload = function() {
+    var amountInput = document.getElementById('amount');
+    amountInput.addEventListener('input', function() {
+    this.value = this.value.replace(/[^0-9]/g, '');
+      });
+    };
+  </script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/web3@1.5.3/dist/web3.min.js"></script>
+
+<script>
+    var contract;
+    var web3;
+
+    $(document).ready(function() {
+        if (typeof web3 !== 'undefined') {
+            web3 = new Web3(web3.currentProvider);
+        } else {
+            // Handle the case when the user doesn't have MetaMask or any other Ethereum provider
+            web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/YOUR_INFURA_PROJECT_ID"));
+        }
+
+		var address = "0x437208D19162d66DF94640284B41bC2EA81D32e7";
+		var abi =[
+		{
+			"inputs": [
+				{
+					"internalType": "int256",
+					"name": "amt",
+					"type": "int256"
+				}
+			],
+			"name": "deposit",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "recipient",
+					"type": "address"
+				},
+				{
+					"internalType": "int256",
+					"name": "amt",
+					"type": "int256"
+				}
+			],
+			"name": "transfer",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [],
+			"stateMutability": "nonpayable",
+			"type": "constructor"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "int256",
+					"name": "amt",
+					"type": "int256"
+				}
+			],
+			"name": "withdraw",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [],
+			"name": "getBalance",
+			"outputs": [
+				{
+					"internalType": "int256",
+					"name": "",
+					"type": "int256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		}
+	];
+
+        contract = new web3.eth.Contract(abi, address);
+
+        $(document).ready(function() {
+            $('#deposit').click(function() {
+                var amt = parseInt($('#amount').val());
+                if (amt > 100000) {
+                    alert("Deposit amount cannot exceed 100,000");
+                    return;
+                }
+                ethereum.request({ method: 'eth_requestAccounts' })
+                    .then(function(accounts) {
+                        if (accounts.length > 0) {
+                            var acc = accounts[0];
+                            return contract.methods.deposit(amt).send({ from: acc });
+                        } else {
+                            throw new Error("No Ethereum accounts available");
+                        }
+                    }).then(function(tx) {
+                        console.log(tx);
+                    }).catch(function(error) {
+                        console.log(error);
+                    });
+            });
+        });
+
+    });
+
+
+</script>
+</body>
+</html>

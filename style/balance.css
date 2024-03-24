@@ -1,0 +1,76 @@
+header{
+  position: fixed;
+  padding: 20px;
+  text-align: center;
+}
+body{
+  background-image: url("F:/Blockchain/BCT original/components/balance.jpg");
+  background-size: 1280px 580px;
+  position: fixed;
+}
+.content {
+  margin: 20px;
+  text-align: center;
+  position: fixed;
+}
+.custom-button{
+  margin-left: 1170px;
+  background-color: aliceblue;
+  color: black;
+  padding: 10px 15px;
+  text-decoration: none;
+  position: fixed;
+  font-size: 20px;
+  margin-top: 5px;
+  font-weight: 600;
+}
+
+.your {
+  font-weight: 400;
+  color: rgb(2, 7, 145);
+  font-weight: 300;
+  position: fixed;
+  margin-top: 150px;
+  margin-left: 70px;
+  border-color: burlywood;
+  border-width: 2px solid;
+  background-color: beige;
+  font-size: 45px;
+  font-family: "Poppins", sans-serif;
+  padding: 10px 9px; /* Adds some padding around the text */
+}
+h1{
+  color: rgb(196, 255, 177);
+  margin-top: 4px;
+  font-weight: 400;
+  font-size: 49px;
+  font-family: "Poppins", sans-serif;
+  border: 2px double #ffffff; /* Sets the border style and color */
+  max-width: 490px;
+  padding: 10px; /* Adds some padding around the text */
+}
+#checkBalance{
+
+  padding: 12px 13px;
+  background-color: #c3ce4b;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  margin-left: 500px;
+  font-weight: 400;
+  font-size: 25px;
+}
+
+#balance{
+  padding: 15px 10px;
+  position: relative;
+  font-weight: 200;
+  color: rgb(2, 7, 145);
+  font-size: 45px;
+  border-color: rgb(6, 4, 127);
+  border-width: 2px;
+  background-color: beige;
+  margin-top: 181px;
+  margin-left: 505px;
+  width: 240px; /* Adjust the width as needed */
+  height: 42px; /* Adjust the height as needed */
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bank Withdrawal Page</title>
+  <link rel="stylesheet" type="text/css" href="F:\Blockchain\BCT original\style\withdraw.css">
+</head>
+<body>
+  <a href="Landing.html" class="custom-button">BACK</a>
+  <label id="withdraw-amount">WITHDRAW AMOUNT:  </label>
+  <input type="text" id="withdraw-input" class="withdraw">
+  <br>
+  <button id="withdraw">Withdraw</button>
+  <p id="error-message" class="error-message"></p>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.5.3/dist/web3.min.js"></script>
+  <script type="text/javascript">
+    window.onload = function() {
+      var withdrawInput = document.querySelector('.withdraw');
+      withdrawInput.addEventListener('input', function() {
+        this.value = this.value.replace(/[^0-9]/g, '');
+      });
+    };
+
+$(document).ready(function() {
+  if (typeof web3 !== 'undefined') {
+    web3 = new Web3(web3.currentProvider);
+  } else {
+    // Handle the case when the user doesn't have MetaMask or any other Ethereum provider
+    web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/YOUR_INFURA_PROJECT_ID"));
+  }
+
+  var address = "0x437208D19162d66DF94640284B41bC2EA81D32e7";
+  var abi = [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getBalance",
+      "outputs": [
+        {
+          "name": "",
+          "type": "int256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "amt",
+          "type": "int256"
+        }
+      ],
+      "name": "withdraw",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ];
+
+  var contract = new web3.eth.Contract(abi, address);
+  var acc;
+
+  $('#withdraw').click(function() {
+    var amt = parseInt($('#withdraw-input').val());
+    ethereum.request({ method: 'eth_requestAccounts' })
+      .then(function(accounts) {
+        if (accounts.length > 0) {
+          acc = accounts[0];
+          return contract.methods.getBalance().call({ from: acc }); // Get the account balance
+        } else {
+          throw new Error("No Ethereum accounts available");
+        }
+      }).then(function(balance) {
+        var totalBalance = parseInt(balance);
+        if (amt <= totalBalance) { // Check if withdrawal amount is less than or equal to the total balance
+          return contract.methods.withdraw(amt).send({ from: acc });
+        } else {
+          throw new Error("Withdrawal amount exceeds account balance");
+        }
+      }).then(function(tx) {
+        console.log(tx);
+      }).catch(function(error) {
+        console.log(error);
+        $('#error-message').text("YOU DON'T HAVE ENOUGH BALANCE");
+        alert("Withdrawal amount exceeds account balance");
+      });
+  });
+});
+  </script>
+</body>
+</html>
